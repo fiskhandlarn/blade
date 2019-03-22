@@ -9,18 +9,11 @@
  * file that was distributed with this source code.
  */
 
-/*
- * Plugin Name: Blade
- * Description: A theme support plugin for WordPlate.
- * Author: Sot
- * Author URI: https://sot.se
- * Version: 0.1
- * Plugin URI: https://github.com/sotagency/blade#readme
- */
-
 declare(strict_types=1);
 
 use Jenssegers\Blade\Blade;
+
+//dump("!");
 
 if (!function_exists('view')) {
 
