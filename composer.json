@@ -9,11 +9,16 @@
       "name": "Oskar Joelson",
       "email": "oskar.joelson@wearemore.se",
       "homepage": "https://wearemore.se/"
+    },
+    {
+      "name": "Daniel Gerdgren",
+      "email": "daniel.gerdgren@hoy.se",
+      "homepage": "https://hoy.se/"
     }
   ],
   "require": {
-    "php": "^7.1.3",
-    "jenssegers/blade": "^1.1",
+    "php": "^7.2",
+    "illuminate/view": "^5.7",
     "wordplate/framework": "^6.2"
   },
   "config": {
@@ -28,6 +33,9 @@
   "autoload": {
     "files": [
       "src/helpers.php"
-    ]
+    ],
+    "psr-4": {
+      "Sotagency\\": "src/"
+    }
   }
 }

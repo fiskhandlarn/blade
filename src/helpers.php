@@ -11,32 +11,26 @@
 
 declare(strict_types=1);
 
-use Jenssegers\Blade\Blade;
+use Sotagency\Blade;
 
-//dump("!");
-
-if (!function_exists('view')) {
-
+if (!function_exists('blade')) {
     /**
-     * Return a view with data.
+     * Render blade templates.
      *
-     * @param string $name
+     * @param string $view
      * @param array $data
+     * @param bool $data
      *
      * @return string
      */
-    function view(string $name, array $data = [], $echo=true): string
+    function blade(string $view, array $data = [], bool $echo = true): string
     {
         static $blade;
-
-        if (!$blade) {
-            $blade = new Blade(
-                base_path('resources/views'),
-                base_path('storage/views')
-            );
+        if (!isset($blade)) {
+            $blade = new Blade();
         }
 
-        $ret = (string) $blade->make($name, $data);
+        $ret = (string) $blade->render($view, $data);
 
         if ($echo) {
             echo $ret;
