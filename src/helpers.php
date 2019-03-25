@@ -28,8 +28,8 @@ if (!function_exists('blade')) {
         static $blade;
         if (!isset($blade)) {
             $blade = new Blade(
-                base_path('resources/views'),
-                base_path('storage/views')
+                apply_filters('blade/viewpaths', base_path('resources/views')),
+                apply_filters('blade/cachepath', base_path('storage/views'))
             );
         }
 
