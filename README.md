@@ -21,7 +21,7 @@ blade('index', ['machine' => 'Voight-Kampff']);
 ```php
 use Sotagency\Blade;
 
-$blade = new Blade(stylesheet_path('views'), stylesheet_path('cache'));
+$blade = new Blade(get_stylesheet_directory() . '/views', get_stylesheet_directory() . '/cache');
 
 echo $blade->render('index', ['machine' => 'Voight-Kampff']);
 ```
