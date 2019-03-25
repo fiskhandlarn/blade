@@ -30,6 +30,10 @@ echo $blade->render('index', ['machine' => 'Voight-Kampff']);
 
 If `WP_DEBUG` is set to `true` templates will always be rendered and updated.
 
+## Multisite
+
+If run on a WordPress Multisite the cached files will be separated in subfolders by each site's blog id.
+
 ## Filters used by `blade()` helper
 
 Use the `blade/view/paths` filter to customize the base paths where your templates are stored. (Default value is `/resources/views`.)
