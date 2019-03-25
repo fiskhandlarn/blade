@@ -27,7 +27,10 @@ if (!function_exists('blade')) {
     {
         static $blade;
         if (!isset($blade)) {
-            $blade = new Blade();
+            $blade = new Blade(
+                base_path('resources/views'),
+                base_path('storage/views')
+            );
         }
 
         $ret = (string) $blade->render($view, $data);

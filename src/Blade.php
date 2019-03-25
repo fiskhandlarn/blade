@@ -12,6 +12,7 @@ use Illuminate\View\ViewServiceProvider;
  * This is the blade view class.
  *
  * @author Daniel Gerdgren <daniel.gerdgren@hoy.se>
+ * @author Oskar Joelson <oskar.joelson@wearemore.se>
  */
 class Blade
 {
@@ -45,11 +46,20 @@ class Blade
     protected $engineResolver;
 
     /**
-     * Blase constructor.
+     * Blade constructor.
+     *
+     * @param string|array       $viewPaths
+     * @param string             $cachePath
      */
-    public function __construct()
+    public function __construct($viewPaths, $cachePath)
     {
+        $this->viewPaths = $viewPaths;
+        $this->cachePath = $cachePath;
         $this->container = new Container();
+
+        if (is_multisite()) {
+            $this->cachePath .= '/' . intval(get_current_blog_id());
+        }
 
         $this->filesystem = new Filesystem();
         $this->container->bindIf('files', function () {
@@ -62,26 +72,17 @@ class Blade
         }, true);
 
         $this->container->bindIf('config', function () {
-            $blogId = intval(get_current_blog_id());
-
-            if (defined('BLADE_CACHE_DIR') && !empty(BLADE_CACHE_DIR)) {
-                $cachePath = rtrim(BLADE_CACHE_DIR, '/').'/'.$blogId;
-            } else {
-                $uploadDir = wp_upload_dir();
-                $cachePath = $uploadDir['basedir'].'/.cache/'.$blogId;
-            }
-
             if (defined('WP_DEBUG') && WP_DEBUG === true) {
-                $this->filesystem->cleanDirectory($cachePath);
+                $this->filesystem->cleanDirectory($this->cachePath);
             }
 
-            if (!$this->filesystem->isDirectory($cachePath)) {
-                $this->filesystem->makeDirectory($cachePath, 0775, true, true);
+            if (!$this->filesystem->isDirectory($this->cachePath)) {
+                $this->filesystem->makeDirectory($this->cachePath, 0775, true, true);
             }
 
             return [
-                'view.paths' => [base_path('resources/views')],
-                'view.compiled' => $cachePath,
+                'view.paths' => (array) $this->viewPaths,
+                'view.compiled' => $this->cachePath,
             ];
         }, true);
 
