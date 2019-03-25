@@ -4,7 +4,7 @@
 add_filter('blade/view/paths', function ($paths) {
     $paths = (array) $paths;
 
-    $paths[] = base_path('resources/views2');
+    $paths[] = get_stylesheet_directory() . '/views';
 
     return $paths;
 });
