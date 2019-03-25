@@ -50,11 +50,13 @@ class Blade
      *
      * @param string|array       $viewPaths
      * @param string             $cachePath
+     * @param bool               $createCacheDirectory
      */
-    public function __construct($viewPaths, $cachePath)
+    public function __construct($viewPaths, $cachePath, $createCacheDirectory = true)
     {
         $this->viewPaths = $viewPaths;
         $this->cachePath = $cachePath;
+        $this->createCacheDirectory = $createCacheDirectory;
         $this->container = new Container();
 
         if (is_multisite()) {
@@ -76,7 +78,7 @@ class Blade
                 $this->filesystem->cleanDirectory($this->cachePath);
             }
 
-            if (!$this->filesystem->isDirectory($this->cachePath)) {
+            if ($this->createCacheDirectory && !$this->filesystem->isDirectory($this->cachePath)) {
                 $this->filesystem->makeDirectory($this->cachePath, 0775, true, true);
             }
 
