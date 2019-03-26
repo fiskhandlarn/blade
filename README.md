@@ -30,7 +30,7 @@ echo $blade->render('index', ['machine' => 'Voight-Kampff']);
 
 ### Custom directive
 
-Create a custom directive with helper function `blade_directive`:
+Create a custom [directive](https://laravel.com/docs/5.7/blade#extending-blade) with helper function `blade_directive`:
 
 ```php
 blade_directive('datetime', function ($expression) {
