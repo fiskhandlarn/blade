@@ -97,4 +97,23 @@ class BladeTest extends TestCase
             trim($this->blade->render('composer'))
         );
     }
+
+    public function testShare()
+    {
+        // shorthand
+        $this->blade->share('badge', 'B26354');
+
+        $this->assertEquals(
+            'Deckard. B26354.',
+            trim($this->blade->render('composer'))
+        );
+
+        // array
+        $this->blade->share(['machine' => 'Voight-Kampff']);
+
+        $this->assertEquals(
+            'We call it Voight-Kampff for short.',
+            trim($this->blade->render('variable'))
+        );
+    }
 }
