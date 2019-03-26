@@ -73,4 +73,16 @@ class BladeTest extends TestCase
     {
         $this->assertDirectoryExists('tests/cache/1');
     }
+
+    public function testDirective()
+    {
+        $this->blade->directive('datetime', function ($expression) {
+            return "<?php echo with({$expression})->format('Y-m-d H:i:s'); ?>";
+        });
+
+        $this->assertEquals(
+            '2019-11-01 00:02:42',
+            trim($this->blade->render('directive'))
+        );
+    }
 }
