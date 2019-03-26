@@ -79,3 +79,18 @@ if (!function_exists('blade_composer')) {
         __fiskhandlarn_blade_instance()->composer($views, $callback);
     }
 }
+
+if (!function_exists('blade_share')) {
+    /**
+     * Register global shared data.
+     *
+     * @param  array|string  $key
+     * @param  mixed  $value
+     *
+     * @return mixed
+     */
+    function blade_share($key, $value = null)
+    {
+        return __fiskhandlarn_blade_instance()->share($key, $value);
+    }
+}
