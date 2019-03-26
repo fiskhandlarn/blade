@@ -52,4 +52,25 @@ class BladeTest extends TestCase
             $this->blade->createCacheDirectory
         );
     }
+
+    public function testRender()
+    {
+        $this->assertEquals(
+            'A new life awaits you in the Off-world colonies!',
+            trim($this->blade->render('plain'))
+        );
+    }
+
+    public function testCapillaryDilation()
+    {
+        $this->assertEquals(
+            'We call it Voight-Kampff for short.',
+            trim($this->blade->render('variable', ['machine' => 'Voight-Kampff']))
+        );
+    }
+
+    public function testCreateCacheDirectory()
+    {
+        $this->assertDirectoryExists('tests/cache/1');
+    }
 }
