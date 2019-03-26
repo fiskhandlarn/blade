@@ -1,9 +1,9 @@
 <?php
 
 /*
- * This file is part of sotagency/blade.
+ * This file is part of fiskhandlarn/blade.
  *
- * (c) Oskar Joelson <oskar.joelson@sot.se>
+ * (c) Oskar Joelson <oskar@joelson.org>
  *
  * For the full copyright and license information, please view the LICENSE
  * file that was distributed with this source code.
@@ -11,7 +11,7 @@
 
 declare(strict_types=1);
 
-use Sotagency\Blade;
+use Fiskhandlarn\Blade;
 
 if (!function_exists('base_path')) {
     /**

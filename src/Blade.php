@@ -1,6 +1,6 @@
 <?php
 
-namespace Sotagency;
+namespace Fiskhandlarn;
 
 use Closure;
 use Illuminate\Container\Container;
@@ -12,7 +12,7 @@ use Illuminate\View\ViewServiceProvider;
  * This is the blade view class.
  *
  * @author Daniel Gerdgren <daniel.gerdgren@hoy.se>
- * @author Oskar Joelson <oskar.joelson@wearemore.se>
+ * @author Oskar Joelson <oskar@joelson.org>
  */
 class Blade
 {

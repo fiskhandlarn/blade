@@ -19,7 +19,7 @@ blade('index', ['machine' => 'Voight-Kampff']);
 ... or instantiate Blade by passing the folder(s) where your view files are located, and a cache folder. Render a template by calling the `render` method.
 
 ```php
-use Sotagency\Blade;
+use Fiskhandlarn\Blade;
 
 $blade = new Blade(get_stylesheet_directory() . '/views', get_stylesheet_directory() . '/cache');
 
