@@ -74,6 +74,25 @@ $blade->composer('*', function ($view) {
 });
 ```
 
+### Share variables
+
+Share variables across all templates with helper function `blade_share`:
+
+```php
+// Make variable available in all views
+blade_share(['badge' => 'B26354']);
+```
+
+... or use the `share` method on a `Blade` object:
+
+```php
+$blade->share(['badge' => 'B26354']);
+```
+
+### Extension
+
+The `Blade` class passes all method calls to the internal compiler (see [documentation](https://laravel.com/docs/5.7/blade)) or view factory (see [documentation](https://laravel.com/docs/5.7/views) for info on `exists`, `first` and `creator`).
+
 ## Cache
 
 If `WP_DEBUG` is set to `true` templates will always be rendered and updated.
