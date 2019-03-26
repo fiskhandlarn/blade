@@ -85,4 +85,16 @@ class BladeTest extends TestCase
             trim($this->blade->render('directive'))
         );
     }
+
+    public function testComposer()
+    {
+        $this->blade->composer('composer', function ($view) {
+            $view->with(['badge' => 'B26354']);
+        });
+
+        $this->assertEquals(
+            'Deckard. B26354.',
+            trim($this->blade->render('composer'))
+        );
+    }
 }
