@@ -91,6 +91,27 @@ class Blade
         (new ViewServiceProvider($this->container))->register();
 
         $this->engineResolver = $this->container->make('view.engine.resolver');
+        $this->compiler = $this->engineResolver->resolve('blade')->getCompiler();
+    }
+
+    /**
+     * Undefined methods are proxied to the compiler
+     * and the view factory for API ease of use.
+     *
+     * @param string $name
+     * @param array  $arguments
+     *
+     * @return mixed
+     */
+    public function __call($name, $arguments)
+    {
+        if (method_exists($this->compiler, $name)) {
+            return $this->compiler->{$name}(...$arguments);
+        }
+
+        if (method_exists($this->container['view'], $name)) {
+            return $this->container['view']->{$name}(...$arguments);
+        }
     }
 
     public function render($view, $data = [])
