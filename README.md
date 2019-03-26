@@ -50,7 +50,7 @@ Then you can use the directive in your templates:
 
 ```php
 {{-- In your Blade template --}}
-<?php $dateObj = new DateTime('2019-11-01 00:02:42') ?>
+@php $dateObj = new DateTime('2019-11-01 00:02:42') @endphp
 @datetime($dateObj)
 ```
 
