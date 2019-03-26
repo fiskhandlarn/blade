@@ -13,6 +13,21 @@ declare(strict_types=1);
 
 use Fiskhandlarn\Blade;
 
+function __fiskhandlarn_blade_instance(): Blade
+{
+    static $blade;
+
+    if (!isset($blade)) {
+        $blade = new Blade(
+            apply_filters('blade/view/paths', base_path('resources/views')),
+            apply_filters('blade/cache/path', base_path('storage/views')),
+            apply_filters('blade/cache/create', true)
+        );
+    }
+
+    return $blade;
+}
+
 if (!function_exists('blade')) {
     /**
      * Render blade templates.
@@ -25,21 +40,27 @@ if (!function_exists('blade')) {
      */
     function blade(string $view, array $data = [], bool $echo = true): string
     {
-        static $blade;
-        if (!isset($blade)) {
-            $blade = new Blade(
-                apply_filters('blade/view/paths', base_path('resources/views')),
-                apply_filters('blade/cache/path', base_path('storage/views')),
-                apply_filters('blade/cache/create', true)
-            );
-        }
-
-        $ret = (string) $blade->render($view, $data);
+        $ret = (string) __fiskhandlarn_blade_instance()->render($view, $data);
 
         if ($echo) {
             echo $ret;
         }
 
         return $ret;
+    }
+}
+
+if (!function_exists('blade_directive')) {
+    /**
+     * Register a global custom directive.
+     *
+     * @param  string  $name
+     * @param  callable  $handler
+     *
+     * @return void
+     */
+    function blade_directive(string $name, callable $handler): void
+    {
+        __fiskhandlarn_blade_instance()->directive($name, $handler);
     }
 }
