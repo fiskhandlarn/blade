@@ -13,24 +13,6 @@ declare(strict_types=1);
 
 use Fiskhandlarn\Blade;
 
-if (!function_exists('base_path')) {
-    /**
-     * Get the path to the base of the install.
-     *
-     * @param string $path
-     *
-     * @return string
-     */
-    function base_path(string $path = ''): string
-    {
-        $container = Container::getInstance();
-
-        $path = $path ? DIRECTORY_SEPARATOR.$path : $path;
-
-        return sprintf('%s%s', $container->getBasePath(), $path);
-    }
-}
-
 if (!function_exists('blade')) {
     /**
      * Render blade templates.

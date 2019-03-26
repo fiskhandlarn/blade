@@ -1,6 +1,6 @@
 # blade
 
-A library for using [Laravel Blade](https://laravel.com/docs/5.7/blade) templates in WordPress/[WordPlate](https://wordplate.github.io/).
+A library for using [Laravel Blade](https://laravel.com/docs/5.7/blade) templates in [WordPlate](https://wordplate.github.io/).
 
 ## Installation
 
