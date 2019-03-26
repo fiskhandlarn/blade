@@ -4,7 +4,11 @@ A library for using [Laravel Blade](https://laravel.com/docs/5.7/blade) template
 
 ## Installation
 
-TODO
+Require this package, with [Composer](https://getcomposer.org), in the root directory of your project.
+
+```bash
+$ composer require fiskhandlarn/blade
+```
 
 ## Usage
 
