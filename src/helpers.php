@@ -64,3 +64,18 @@ if (!function_exists('blade_directive')) {
         __fiskhandlarn_blade_instance()->directive($name, $handler);
     }
 }
+
+if (!function_exists('blade_composer')) {
+    /**
+     * Register a global composer.
+     *
+     * @param  array|string  $views
+     * @param  \Closure|string  $callback
+     *
+     * @return void
+     */
+    function blade_composer($views, $callback): void
+    {
+        __fiskhandlarn_blade_instance()->composer($views, $callback);
+    }
+}

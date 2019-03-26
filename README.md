@@ -54,6 +54,26 @@ Then you can use the directive in your templates:
 @datetime($dateObj)
 ```
 
+### Custom composer
+
+Create a custom [composer](https://laravel.com/docs/5.7/views#view-composers) with helper function `blade_composer`:
+
+```php
+// Make variable available in all views
+blade_composer('*', function ($view) {
+    $view->with(['badge' => 'B26354']);
+});
+```
+
+... or use the `composer` method on a `Blade` object:
+
+```php
+// Make variable available in all views
+$blade->composer('*', function ($view) {
+    $view->with(['badge' => 'B26354']);
+});
+```
+
 ## Cache
 
 If `WP_DEBUG` is set to `true` templates will always be rendered and updated.
