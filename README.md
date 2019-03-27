@@ -4,6 +4,9 @@ A library for using [Laravel Blade](https://laravel.com/docs/5.7/blade) template
 
 [![Build Status](https://badgen.net/travis/fiskhandlarn/blade/master)](https://travis-ci.com/fiskhandlarn/blade)
 [![Coverage Status](https://badgen.net/codecov/c/github/fiskhandlarn/blade)](https://codecov.io/github/fiskhandlarn/blade)
+[![Total Downloads](https://badgen.net/packagist/dt/fiskhandlarn/blade)](https://packagist.org/packages/fiskhandlarn/blade)
+[![Latest Version](https://badgen.net/github/release/fiskhandlarn/blade)](https://github.com/fiskhandlarn/blade/releases)
+[![License](https://badgen.net/packagist/license/fiskhandlarn/blade)](https://packagist.org/packages/fiskhandlarn/blade)
 
 ## Installation
 
