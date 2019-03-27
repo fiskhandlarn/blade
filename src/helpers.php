@@ -11,22 +11,7 @@
 
 declare(strict_types=1);
 
-use Fiskhandlarn\Blade;
-
-function __fiskhandlarn_blade_instance(): Blade
-{
-    static $blade;
-
-    if (!isset($blade)) {
-        $blade = new Blade(
-            apply_filters('blade/view/paths', base_path('resources/views')),
-            apply_filters('blade/cache/path', base_path('storage/views')),
-            apply_filters('blade/cache/create', true)
-        );
-    }
-
-    return $blade;
-}
+use Fiskhandlarn\BladeFacade;
 
 if (!function_exists('blade')) {
     /**
@@ -40,7 +25,7 @@ if (!function_exists('blade')) {
      */
     function blade(string $view, array $data = [], bool $echo = true): string
     {
-        $ret = (string) __fiskhandlarn_blade_instance()->render($view, $data);
+        $ret = (string) BladeFacade::render($view, $data);
 
         if ($echo) {
             echo $ret;
@@ -61,7 +46,7 @@ if (!function_exists('blade_directive')) {
      */
     function blade_directive(string $name, callable $handler): void
     {
-        __fiskhandlarn_blade_instance()->directive($name, $handler);
+        BladeFacade::directive($name, $handler);
     }
 }
 
@@ -76,7 +61,7 @@ if (!function_exists('blade_composer')) {
      */
     function blade_composer($views, $callback): void
     {
-        __fiskhandlarn_blade_instance()->composer($views, $callback);
+        BladeFacade::composer($views, $callback);
     }
 }
 
@@ -91,6 +76,6 @@ if (!function_exists('blade_share')) {
      */
     function blade_share($key, $value = null)
     {
-        return __fiskhandlarn_blade_instance()->share($key, $value);
+        return BladeFacade::share($key, $value);
     }
 }
