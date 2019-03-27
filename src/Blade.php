@@ -74,9 +74,7 @@ class Blade
         }, true);
 
         $this->container->bindIf('config', function () {
-            if (defined('WP_DEBUG') && WP_DEBUG === true) {
-                $this->filesystem->cleanDirectory($this->cachePath);
-            }
+            $this->cleanCacheDirectory();
 
             if ($this->createCacheDirectory && !$this->filesystem->isDirectory($this->cachePath)) {
                 $this->filesystem->makeDirectory($this->cachePath, 0775, true, true);
@@ -111,6 +109,13 @@ class Blade
 
         if (method_exists($this->container['view'], $name)) {
             return $this->container['view']->{$name}(...$arguments);
+        }
+    }
+
+    public function cleanCacheDirectory()
+    {
+        if (defined('WP_DEBUG') && WP_DEBUG === true) {
+            $this->filesystem->cleanDirectory($this->cachePath);
         }
     }
 

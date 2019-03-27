@@ -22,6 +22,7 @@
     "wordplate/framework": "^6.3.1"
   },
   "require-dev": {
+    "10up/wp_mock": "^0.4.2",
     "phpunit/phpunit": "^8.0"
   },
   "config": {
