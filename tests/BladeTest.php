@@ -14,6 +14,7 @@ declare(strict_types=1);
 namespace Fiskhandlarn\Tests;
 
 use Fiskhandlarn\Blade;
+use Fiskhandlarn\BladeFacade;
 use WP_Mock\Tools\TestCase;
 
 /**
@@ -33,11 +34,11 @@ class BladeTest extends TestCase
         $this->blade = new Blade('tests/views', 'tests/cache');
 
         \WP_Mock::onFilter('blade/view/paths')
-            ->with(base_path('resources/views'))
+            ->with(BladeFacade::base_path('resources/views'))
             ->reply('tests/views');
 
         \WP_Mock::onFilter('blade/cache/path')
-            ->with(base_path('storage/views'))
+            ->with(BladeFacade::base_path('storage/views'))
             ->reply('tests/cache');
     }
 
