@@ -73,14 +73,19 @@ class BladeTest extends TestCase
 
     public function testRender()
     {
-        $this->blade->cleanCacheDirectory();
+        $this->cleanCacheDirectory();
 
         $this->assertEquals(
             'A new life awaits you in the Off-world colonies!',
             trim($this->blade->render('plain'))
         );
 
-        $this->blade->cleanCacheDirectory();
+        $this->cleanCacheDirectory();
+
+        $this->expectOutputString('A new life awaits you in the Off-world colonies!');
+        blade('plain');
+
+        $this->cleanCacheDirectory();
 
         $this->assertEquals(
             'A new life awaits you in the Off-world colonies!',
@@ -90,14 +95,19 @@ class BladeTest extends TestCase
 
     public function testCapillaryDilation()
     {
-        $this->blade->cleanCacheDirectory();
+        $this->cleanCacheDirectory();
 
         $this->assertEquals(
             'We call it Voight-Kampff for short.',
             trim($this->blade->render('variable', ['machine' => 'Voight-Kampff']))
         );
 
-        $this->blade->cleanCacheDirectory();
+        $this->cleanCacheDirectory();
+
+        $this->expectOutputString('We call it Voight-Kampff for short.');
+        blade('variable', ['machine' => 'Voight-Kampff']);
+
+        $this->cleanCacheDirectory();
 
         $this->assertEquals(
             'We call it Voight-Kampff for short.',
@@ -112,7 +122,7 @@ class BladeTest extends TestCase
 
     public function testDirective()
     {
-        $this->blade->cleanCacheDirectory();
+        $this->cleanCacheDirectory();
 
         $this->blade->directive('datetime', function ($expression) {
             return "<?php echo with({$expression})->format('Y-m-d H:i:s'); ?>";
@@ -123,11 +133,16 @@ class BladeTest extends TestCase
             trim($this->blade->render('directive'))
         );
 
-        $this->blade->cleanCacheDirectory();
+        $this->cleanCacheDirectory();
 
         blade_directive('datetime', function ($expression) {
             return "<?php echo with({$expression})->format('Y-m-d H:i:s'); ?>";
         });
+
+        $this->expectOutputString('2019-11-01 00:02:42');
+        blade('directive');
+
+        $this->cleanCacheDirectory();
 
         $this->assertEquals(
             '2019-11-01 00:02:42',
@@ -137,7 +152,7 @@ class BladeTest extends TestCase
 
     public function testComposer()
     {
-        $this->blade->cleanCacheDirectory();
+        $this->cleanCacheDirectory();
 
         $this->blade->composer('composer', function ($view) {
             $view->with(['badge' => 'B26354']);
@@ -148,11 +163,16 @@ class BladeTest extends TestCase
             trim($this->blade->render('composer'))
         );
 
-        $this->blade->cleanCacheDirectory();
+        $this->cleanCacheDirectory();
 
         blade_composer('composer', function ($view) {
             $view->with(['badge' => 'B26354']);
         });
+
+        $this->expectOutputString('Deckard. B26354.');
+        blade('composer');
+
+        $this->cleanCacheDirectory();
 
         $this->assertEquals(
             'Deckard. B26354.',
@@ -162,7 +182,7 @@ class BladeTest extends TestCase
 
     public function testShare()
     {
-        $this->blade->cleanCacheDirectory();
+        $this->cleanCacheDirectory();
 
         // shorthand
         $this->blade->share('position', '45');
@@ -183,25 +203,37 @@ class BladeTest extends TestCase
             trim($this->blade->render('share-array'))
         );
 
-        $this->blade->cleanCacheDirectory();
+        $this->cleanCacheDirectory();
 
-        // shorthand
+        $this->expectOutputString('Track 45 right. Stop. Center and stop.' . 'Enhance 224 to 176.');
+
         blade_share('position', '45');
+
+        blade('share-shorthand');
+
+        blade_share([
+            'startPosition' => '224',
+            'endPosition' => '176',
+        ]);
+
+        blade('share-array');
+
+        $this->cleanCacheDirectory();
 
         $this->assertEquals(
             'Track 45 right. Stop. Center and stop.',
             trim(blade('share-shorthand', [], false))
         );
 
-        // array
-        blade_share([
-            'startPosition' => '224',
-            'endPosition' => '176',
-        ]);
-
         $this->assertEquals(
             'Enhance 224 to 176.',
             trim(blade('share-array', [], false))
         );
+    }
+
+    private function cleanCacheDirectory()
+    {
+        $this->blade->cleanCacheDirectory();
+        BladeFacade::cleanCacheDirectory();
     }
 }

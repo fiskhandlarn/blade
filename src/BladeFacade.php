@@ -68,4 +68,9 @@ class BladeFacade
 
         return sprintf('%s%s', realpath($vendorDir . '/../'), $path);
     }
+
+    public static function cleanCacheDirectory()
+    {
+        self::instance()->cleanCacheDirectory();
+    }
 }
