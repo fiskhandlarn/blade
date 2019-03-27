@@ -7,13 +7,12 @@
   "authors": [
     {
       "name": "Oskar Joelson",
-      "email": "oskar@joelson.org",
-      "homepage": "https://wearemore.se/"
+      "email": "oskar@joelson.org"
     },
     {
       "name": "Daniel Gerdgren",
-      "email": "daniel.gerdgren@hoy.se",
-      "homepage": "https://hoy.se/"
+      "email": "tditlu@users.noreply.github.com",
+      "homepage": "https://todi.se"
     }
   ],
   "require": {

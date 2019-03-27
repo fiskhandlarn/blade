@@ -11,7 +11,7 @@ use Illuminate\View\ViewServiceProvider;
 /**
  * This is the blade view class.
  *
- * @author Daniel Gerdgren <daniel.gerdgren@hoy.se>
+ * @author Daniel Gerdgren <tditlu@users.noreply.github.com>
  * @author Oskar Joelson <oskar@joelson.org>
  */
 class Blade
