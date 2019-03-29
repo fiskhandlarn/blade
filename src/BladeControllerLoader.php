@@ -68,7 +68,7 @@ class BladeControllerLoader
             $reflection = new \ReflectionClass($namespace . '\\' . $class);
         } catch (\Exception $exception) {
             // class not found
-            throw new Exception("No such class found in namespace $namespace: $class");
+            throw new \Exception("No such class found in namespace $namespace: $class");
             return null;
         }
 
