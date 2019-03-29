@@ -73,7 +73,7 @@ class BladeControllerLoader
         $filename = $reflection->getFileName();
 
         // Exclude non-Controller classes
-        if (!Utils::doesFileContain($filename, 'extends BladeController')) {
+        if (!$reflection->isSubclassOf('Fiskhandlarn\BladeController')) {
             throw new \Exception("Class does not extend BladeController: $namespace\\$class");
             return null;
         }
