@@ -42,6 +42,11 @@ class BladeFacade
         return self::instance()->render($view, $data);
     }
 
+    public static function renderController(string $view, string $controllerClass): string
+    {
+        return self::instance()->renderController($view, $controllerClass);
+    }
+
     public static function share($key, $value = null)
     {
         return self::instance()->share($key, $value);

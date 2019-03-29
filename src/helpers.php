@@ -12,7 +12,6 @@
 declare(strict_types=1);
 
 use Fiskhandlarn\BladeFacade;
-use Fiskhandlarn\BladeControllerLoader;
 
 if (!function_exists('blade')) {
     /**
@@ -48,7 +47,7 @@ if (!function_exists('blade_controller')) {
      */
     function blade_controller(string $view, string $controllerClass, bool $echo = true): string
     {
-        $ret = (string) BladeFacade::render($view, BladeControllerLoader::dataFromController($controllerClass));
+        $ret = (string) BladeFacade::renderController($view, $controllerClass);
 
         if ($echo) {
             echo $ret;

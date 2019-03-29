@@ -128,8 +128,13 @@ class Blade
         }
     }
 
-    public function render($view, $data = [])
+    public function render(string $view, array $data = []): string
     {
         return $this->container['view']->make($view, $data)->render();
+    }
+
+    public function renderController(string $view, string $controllerClass): string
+    {
+        return $this->render($view, BladeControllerLoader::dataFromController($controllerClass));
     }
 }
