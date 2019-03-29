@@ -16,7 +16,8 @@
   ],
   "require": {
     "php": "^7.2",
-    "illuminate/view": "^5.7"
+    "illuminate/view": "^5.7",
+    "soberwp/controller": "^2.1"
   },
   "require-dev": {
     "10up/wp_mock": "^0.4.2",
