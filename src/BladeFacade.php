@@ -62,7 +62,7 @@ class BladeFacade
     public static function base_path(string $path = ''): string
     {
         if (class_exists('WordPlate\Application')) {
-            return base_path($path);
+            return base_path($path); // @codeCoverageIgnore
         }
 
         // https://stackoverflow.com/a/45364136/1109380
