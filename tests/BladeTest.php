@@ -18,6 +18,7 @@ use Fiskhandlarn\BladeFacade;
 use WP_Mock\Tools\TestCase;
 
 require __DIR__ . '/App/Controllers/Variable.php';
+require __DIR__ . '/App/Controllers/NonController.php';
 
 /**
  * This is the blade test class.
@@ -137,6 +138,23 @@ class BladeTest extends TestCase
             'We call it Voight-Kampff for short.',
             trim(blade_controller('variable', 'Variable', false))
         );
+    }
+
+    public function testRenderControllerClassException()
+    {
+        $this->cleanCacheDirectory();
+        $this->expectException(\Exception::class);
+        $this->expectExceptionMessage('No such class found in namespace App\Controllers: NonExistingClass');
+
+        $this->blade->renderController('variable', 'NonExistingClass');
+    }
+
+    public function testRenderControllerInstanceException()
+    {
+        $this->expectException(\Exception::class);
+        $this->expectExceptionMessage('Class does not extend BladeController: App\Controllers\NonController');
+
+        $this->blade->renderController('variable', 'NonController');
     }
 
     public function testCreateCacheDirectory()
