@@ -52,7 +52,7 @@ class BladeControllerLoader
         $controller->__before();
 
         // Data
-        $controller->__setData([]);
+        $controller->__setData(['__app' => []]);
         //$controller->__setData($data); // TODO
 
         // Lifecycle
