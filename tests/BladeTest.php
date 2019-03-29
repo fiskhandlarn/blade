@@ -150,6 +150,28 @@ class BladeTest extends TestCase
         $this->blade->renderController('variable', 'VariableDisabled');
     }
 
+    public function testRenderControllerAdditionalData()
+    {
+        $this->cleanCacheDirectory();
+
+        $this->assertEquals(
+            'Deckard. B26354.',
+            trim($this->blade->renderController('composer', 'Variable', ['badge' => 'B26354']))
+        );
+
+        $this->cleanCacheDirectory();
+
+        $this->expectOutputString('Deckard. B26354.');
+        blade_controller('composer', 'Variable', ['badge' => 'B26354']);
+
+        $this->cleanCacheDirectory();
+
+        $this->assertEquals(
+            'Deckard. B26354.',
+            trim(blade_controller('composer', 'Variable', ['badge' => 'B26354'], false))
+        );
+    }
+
     public function testRenderControllerClassException()
     {
         $this->cleanCacheDirectory();
