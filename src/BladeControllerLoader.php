@@ -32,12 +32,12 @@ class BladeControllerLoader
         return self::$instance;
     }
 
-    public static function dataFromController(string $controllerClass): array
+    public static function dataFromController(string $controllerClass): ?array
     {
         $class = self::getClassToRun(self::instance()->namespace, $controllerClass);
 
         if ($class === null) {
-            return [];
+            return null;
         }
 
         $container = Container::getInstance();
