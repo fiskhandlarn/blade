@@ -143,6 +143,7 @@ class BladeTest extends TestCase
     public function testRenderControllerClassException()
     {
         $this->cleanCacheDirectory();
+
         $this->expectException(\Exception::class);
         $this->expectExceptionMessage('No such class found in namespace App\Controllers: NonExistingClass');
 
@@ -151,6 +152,8 @@ class BladeTest extends TestCase
 
     public function testRenderControllerInstanceException()
     {
+        $this->cleanCacheDirectory();
+
         $this->expectException(\Exception::class);
         $this->expectExceptionMessage('Class does not extend BladeController: App\Controllers\NonController');
 
