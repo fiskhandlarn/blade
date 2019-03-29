@@ -17,6 +17,8 @@ use Fiskhandlarn\Blade;
 use Fiskhandlarn\BladeFacade;
 use WP_Mock\Tools\TestCase;
 
+require __DIR__ . '/App/Controllers/Variable.php';
+
 /**
  * This is the blade test class.
  *
@@ -112,6 +114,28 @@ class BladeTest extends TestCase
         $this->assertEquals(
             'We call it Voight-Kampff for short.',
             trim(blade('variable', ['machine' => 'Voight-Kampff'], false))
+        );
+    }
+
+    public function testRenderController()
+    {
+        $this->cleanCacheDirectory();
+
+        $this->assertEquals(
+            'We call it Voight-Kampff for short.',
+            trim($this->blade->renderController('variable', 'Variable'))
+        );
+
+        $this->cleanCacheDirectory();
+
+        $this->expectOutputString('We call it Voight-Kampff for short.');
+        blade_controller('variable', 'Variable');
+
+        $this->cleanCacheDirectory();
+
+        $this->assertEquals(
+            'We call it Voight-Kampff for short.',
+            trim(blade_controller('variable', 'Variable', false))
         );
     }
 
