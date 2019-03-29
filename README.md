@@ -128,7 +128,7 @@ If `WP_DEBUG` is set to `true` templates will always be rendered and updated.
 
 If run on a WordPress Multisite the cached files will be separated in subfolders by each site's blog id.
 
-## Filters used by `blade` helper
+## Filters
 
 Use the `blade/view/paths` filter to customize the base paths where your templates are stored. (Default value is `/resources/views`.)
 
@@ -155,4 +155,12 @@ Use the `blade/cache/path` filter to control creation of cache folder. (Default 
 
 ```php
 add_filter('blade/cache/create', '__return_false');
+```
+
+Use the `blade/controller/namespace` filter to customize the controller namespace. (Default value is `App\Controllers`.)
+
+```php
+add_filter('blade/controller/namespace', function () {
+    return 'MyApp\Controllers';
+});
 ```
