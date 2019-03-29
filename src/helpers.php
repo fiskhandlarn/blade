@@ -12,6 +12,7 @@
 declare(strict_types=1);
 
 use Fiskhandlarn\BladeFacade;
+use Fiskhandlarn\BladeControllerLoader;
 
 if (!function_exists('blade')) {
     /**
@@ -26,6 +27,28 @@ if (!function_exists('blade')) {
     function blade(string $view, array $data = [], bool $echo = true): string
     {
         $ret = (string) BladeFacade::render($view, $data);
+
+        if ($echo) {
+            echo $ret;
+        }
+
+        return $ret;
+    }
+}
+
+if (!function_exists('blade_controller')) {
+    /**
+     * Render blade templates with data from controller class.
+     *
+     * @param string $view
+     * @param string $controllerClass
+     * @param bool $data
+     *
+     * @return string
+     */
+    function blade_controller(string $view, string $controllerClass, bool $echo = true): string
+    {
+        $ret = (string) BladeFacade::render($view, BladeControllerLoader::dataFromController($controllerClass));
 
         if ($echo) {
             echo $ret;
