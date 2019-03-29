@@ -55,6 +55,16 @@ blade_controller('index', 'Index');
 echo $blade->renderController('index', 'Index');
 ```
 
+You can also pass additional data (this won't override properties from the controller though):
+
+```php
+blade_controller('index', 'Index', ['lifespan' => "A coding sequence cannot be revised once it's been established."]);
+```
+
+```php
+echo $blade->renderController('index', 'Index', ['lifespan' => "A coding sequence cannot be revised once it's been established."]);
+```
+
 See [soberwp/controller](https://github.com/soberwp/controller) for more info on how to use controllers.
 
 Supported features:

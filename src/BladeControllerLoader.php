@@ -32,7 +32,7 @@ class BladeControllerLoader
         return self::$instance;
     }
 
-    public static function dataFromController(string $controllerClass): ?array
+    public static function dataFromController(string $controllerClass, array $additionalData = []): ?array
     {
         $class = self::getClassToRun(self::instance()->namespace, $controllerClass);
 
@@ -49,8 +49,7 @@ class BladeControllerLoader
             $controller->__before();
 
             // Data
-            $controller->__setData(['__app' => []]);
-            //$controller->__setData($data); // TODO
+            $controller->__setData($additionalData);
 
             // Lifecycle
             $controller->__after();

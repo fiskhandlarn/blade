@@ -137,7 +137,7 @@ class BladeTest extends TestCase
 
         $this->assertEquals(
             'We call it Voight-Kampff for short.',
-            trim(blade_controller('variable', 'Variable', false))
+            trim(blade_controller('variable', 'Variable', [], false))
         );
     }
 

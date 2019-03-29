@@ -20,3 +20,13 @@ function get_current_blog_id()
 {
     return 1;
 }
+
+function is_singular()
+{
+    return true;
+}
+
+function get_post()
+{
+    return [];
+}

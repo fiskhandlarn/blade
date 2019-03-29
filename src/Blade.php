@@ -133,8 +133,8 @@ class Blade
         return $this->container['view']->make($view, $data)->render();
     }
 
-    public function renderController(string $view, string $controllerClass): string
+    public function renderController(string $view, string $controllerClass, array $additionalData = []): string
     {
-        return $this->render($view, BladeControllerLoader::dataFromController($controllerClass));
+        return $this->render($view, BladeControllerLoader::dataFromController($controllerClass, $additionalData));
     }
 }

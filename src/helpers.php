@@ -45,9 +45,9 @@ if (!function_exists('blade_controller')) {
      *
      * @return string
      */
-    function blade_controller(string $view, string $controllerClass, bool $echo = true): string
+    function blade_controller(string $view, string $controllerClass, array $additionalData = [], bool $echo = true): string
     {
-        $ret = (string) BladeFacade::renderController($view, $controllerClass);
+        $ret = (string) BladeFacade::renderController($view, $controllerClass, $additionalData);
 
         if ($echo) {
             echo $ret;

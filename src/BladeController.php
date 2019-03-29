@@ -11,4 +11,6 @@ use Sober\Controller\Controller;
  */
 class BladeController extends Controller
 {
+    // Expose Sober\Controller\Controller funtionality to all BladeControllers
+    protected $template = 'app';
 }
