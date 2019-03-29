@@ -36,30 +36,28 @@ class BladeControllerLoader
     {
         $class = self::getClassToRun(self::instance()->namespace, $controllerClass);
 
-        if ($class === null) {
-            return null;
+        if ($class !== null) {
+            $container = Container::getInstance();
+
+            // Recreate the class so that $post is included
+            $controller = $container->make($class);
+
+            // Params
+            $controller->__setParams();
+
+            // Lifecycle
+            $controller->__before();
+
+            // Data
+            $controller->__setData(['__app' => []]);
+            //$controller->__setData($data); // TODO
+
+            // Lifecycle
+            $controller->__after();
+
+            // Return
+            return $controller->__getData();
         }
-
-        $container = Container::getInstance();
-
-        // Recreate the class so that $post is included
-        $controller = $container->make($class);
-
-        // Params
-        $controller->__setParams();
-
-        // Lifecycle
-        $controller->__before();
-
-        // Data
-        $controller->__setData(['__app' => []]);
-        //$controller->__setData($data); // TODO
-
-        // Lifecycle
-        $controller->__after();
-
-        // Return
-        return $controller->__getData();
     }
 
     private static function getClassToRun(string $namespace, string $class): ?string
