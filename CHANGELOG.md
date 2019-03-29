@@ -1,5 +1,10 @@
 # CHANGELOG
 
+## 0.3 (released 2019-03-27)
+
+- Removed [wordplate/framework](https://github.com/wordplate/framework) dependency
+- Added tests for helpers
+
 ## 0.2.1 (released 2019-03-26)
 
 - Added blade_share helper
