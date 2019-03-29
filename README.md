@@ -39,6 +39,22 @@ $blade = new Blade(get_stylesheet_directory() . '/views', get_stylesheet_directo
 echo $blade->render('index', ['machine' => 'Voight-Kampff']);
 ```
 
+### Render with data from a controller class
+
+Use helper function `blade_controller`:
+
+```php
+blade_controller('index', 'Index');
+```
+
+(This renders and echoes the template `/resources/views/index.blade.php` with data generated from `App\Controllers\Index`.)
+
+... or use the `renderController` method on a `Blade` object:
+
+```php
+echo $blade->renderController('index', 'Index');
+```
+
 ### Custom directive
 
 Create a custom [directive](https://laravel.com/docs/5.7/blade#extending-blade) with helper function `blade_directive`:
