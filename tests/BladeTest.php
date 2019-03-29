@@ -18,6 +18,7 @@ use Fiskhandlarn\BladeFacade;
 use WP_Mock\Tools\TestCase;
 
 require __DIR__ . '/App/Controllers/Variable.php';
+require __DIR__ . '/App/Controllers/VariableDisabled.php';
 require __DIR__ . '/App/Controllers/NonController.php';
 
 /**
@@ -138,6 +139,15 @@ class BladeTest extends TestCase
             'We call it Voight-Kampff for short.',
             trim(blade_controller('variable', 'Variable', false))
         );
+    }
+
+    public function testRenderControllerDisableOption()
+    {
+        $this->cleanCacheDirectory();
+
+        $this->expectException(\ErrorException::class);
+
+        $this->blade->renderController('variable', 'VariableDisabled');
     }
 
     public function testRenderControllerClassException()
