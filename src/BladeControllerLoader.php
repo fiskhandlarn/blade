@@ -66,7 +66,7 @@ class BladeControllerLoader
     {
         try {
             $reflection = new \ReflectionClass($namespace . '\\' . $class);
-        } catch (Exception $exception) {
+        } catch (\Exception $exception) {
             // class not found
             throw new Exception("No such class found in namespace $namespace: $class");
             return null;
@@ -75,8 +75,8 @@ class BladeControllerLoader
         $filename = $reflection->getFileName();
 
         // Exclude non-Controller classes
-        if (!Utils::doesFileContain($filename, 'extends Controller')) {
-            throw new Exception("Class does not extend Controller: $namespace\\$class");
+        if (!Utils::doesFileContain($filename, 'extends BladeController')) {
+            throw new \Exception("Class does not extend BladeController: $namespace\\$class");
             return null;
         }
 
