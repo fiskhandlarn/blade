@@ -55,6 +55,30 @@ blade_controller('index', 'Index');
 echo $blade->renderController('index', 'Index');
 ```
 
+See [soberwp/controller](https://github.com/soberwp/controller) for more info on how to use controllers.
+
+Supported features:
+
+- [Basic Controller](https://github.com/soberwp/controller#basic-controller)
+- [Using Components](https://github.com/soberwp/controller#using-components)
+- [Advanced Custom Fields Module](https://github.com/soberwp/controller#advanced-custom-fields-module)
+- [Template Override Option](https://github.com/soberwp/controller#template-override-option)
+- [Lifecycles](https://github.com/soberwp/controller#lifecycles)
+- [Disable Option](https://github.com/soberwp/controller#disable-option)
+
+Unsupported features:
+
+- [Creating Global Properties](https://github.com/soberwp/controller#creating-global-properties)
+- [Blade Debugger](https://github.com/soberwp/controller#blade-debugger)
+
+Untested features:
+
+- [Inheriting the Tree/Hierarchy](https://github.com/soberwp/controller#inheriting-the-treehierarchy)
+
+Unnecessary features:
+
+- [Using Functions](https://github.com/soberwp/controller#using-functions) (this can be achieved with vanilla PHP)
+
 ### Custom directive
 
 Create a custom [directive](https://laravel.com/docs/5.7/blade#extending-blade) with helper function `blade_directive`:
