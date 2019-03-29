@@ -62,7 +62,6 @@ Supported features:
 - [Basic Controller](https://github.com/soberwp/controller#basic-controller)
 - [Using Components](https://github.com/soberwp/controller#using-components)
 - [Advanced Custom Fields Module](https://github.com/soberwp/controller#advanced-custom-fields-module)
-- [Template Override Option](https://github.com/soberwp/controller#template-override-option)
 - [Lifecycles](https://github.com/soberwp/controller#lifecycles)
 - [Disable Option](https://github.com/soberwp/controller#disable-option)
 
@@ -78,6 +77,7 @@ Untested features:
 Unnecessary features:
 
 - [Using Functions](https://github.com/soberwp/controller#using-functions) (this can be achieved with vanilla PHP)
+- [Template Override Option](https://github.com/soberwp/controller#template-override-option)
 
 ### Custom directive
 
@@ -97,7 +97,7 @@ $blade->directive('datetime', function ($expression) {
 });
 ```
 
-Then you can use the directive in your templates:
+Then you can use the directive in yourt emplates:
 
 ```php
 {{-- In your Blade template --}}
