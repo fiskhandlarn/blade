@@ -117,13 +117,13 @@ class Blade
         if (defined('WP_DEBUG') && WP_DEBUG === true) {
             $gitIgnoreContents = null;
             if ($this->filesystem->exists($this->cachePath . '/.gitignore')) {
-                $gitIgnoreContents = $this->filesystem->get($this->cachePath . '/.gitignore');
+                $gitIgnoreContents = $this->filesystem->get($this->cachePath . '/.gitignore'); // @codeCoverageIgnore
             }
 
             $this->filesystem->cleanDirectory($this->cachePath);
 
             if ($gitIgnoreContents !== null) {
-                $this->filesystem->put($this->cachePath . '/.gitignore', $gitIgnoreContents);
+                $this->filesystem->put($this->cachePath . '/.gitignore', $gitIgnoreContents); // @codeCoverageIgnore
             }
         }
     }
