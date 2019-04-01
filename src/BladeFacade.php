@@ -27,29 +27,24 @@ class BladeFacade
         return self::$instance;
     }
 
-    public static function composer($views, $callback): void
+    /**
+     * Handle dynamic, static calls to the object.
+     *
+     * @param  string  $method
+     * @param  array   $args
+     * @return mixed
+     *
+     * @throws \RuntimeException
+     */
+    public static function __callStatic($method, $args)
     {
-        self::instance()->composer($views, $callback);
-    }
+        $instance = self::instance();
 
-    public static function directive(string $name, callable $handler): void
-    {
-        self::instance()->directive($name, $handler);
-    }
+        if (!$instance) {
+            throw new RuntimeException('A facade root has not been set.');
+        }
 
-    public static function render(string $view, array $data = []): string
-    {
-        return self::instance()->render($view, $data);
-    }
-
-    public static function renderController(string $view, string $controllerClass, array $additionalData = []): string
-    {
-        return self::instance()->renderController($view, $controllerClass, $additionalData);
-    }
-
-    public static function share($key, $value = null)
-    {
-        return self::instance()->share($key, $value);
+        return $instance->$method(...$args);
     }
 
     /**
