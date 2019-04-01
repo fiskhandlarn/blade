@@ -1,5 +1,10 @@
 # CHANGELOG
 
+## 0.4 (released 2019-04-01)
+
+- Added support for controller classes
+- Preserve .gitignore for cache folder
+
 ## 0.3 (released 2019-03-27)
 
 - Removed [wordplate/framework](https://github.com/wordplate/framework) dependency
