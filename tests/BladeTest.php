@@ -15,6 +15,7 @@ namespace Fiskhandlarn\Tests;
 
 use Fiskhandlarn\Blade;
 use Fiskhandlarn\BladeFacade;
+use Illuminate\Filesystem\Filesystem;
 use WP_Mock\Tools\TestCase;
 
 require __DIR__ . '/App/Controllers/Variable.php';
@@ -195,6 +196,18 @@ class BladeTest extends TestCase
     public function testCreateCacheDirectory()
     {
         $this->assertDirectoryExists('tests/cache/1');
+    }
+
+    public function testPreserveGitIgnore()
+    {
+        $filesystem = new Filesystem();
+        $filesystem->put('tests/cache/.gitignore', "");
+
+        $this->cleanCacheDirectory();
+
+        $this->assertFileExists('tests/cache/.gitignore');
+
+        $filesystem->delete('tests/cache/.gitignore');
     }
 
     public function testDirective()
