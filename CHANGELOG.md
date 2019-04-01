@@ -1,5 +1,9 @@
 # CHANGELOG
 
+## 0.4.1 (released 2019-04-01)
+
+- Fixed code coverage
+
 ## 0.4 (released 2019-04-01)
 
 - Added support for controller classes
