@@ -1,5 +1,9 @@
 # CHANGELOG
 
+## 0.4.2 (released 2019-06-14)
+
+- Documented controller class requirements
+
 ## 0.4.1 (released 2019-04-01)
 
 - Fixed code coverage
