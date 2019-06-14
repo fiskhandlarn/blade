@@ -18,6 +18,7 @@ use Fiskhandlarn\BladeFacade;
 use Illuminate\Filesystem\Filesystem;
 use WP_Mock\Tools\TestCase;
 
+require __DIR__ . '/App/Controllers/Method.php';
 require __DIR__ . '/App/Controllers/Variable.php';
 require __DIR__ . '/App/Controllers/VariableDisabled.php';
 require __DIR__ . '/App/Controllers/NonController.php';
@@ -139,6 +140,28 @@ class BladeTest extends TestCase
         $this->assertEquals(
             'We call it Voight-Kampff for short.',
             trim(blade_controller('variable', 'Variable', [], false))
+        );
+    }
+
+    public function testRenderControllerMethod()
+    {
+        $this->cleanCacheDirectory();
+
+        $this->assertEquals(
+            'We call it Voight-Kampff for short.',
+            trim($this->blade->renderController('variable', 'Method'))
+        );
+
+        $this->cleanCacheDirectory();
+
+        $this->expectOutputString('We call it Voight-Kampff for short.');
+        blade_controller('variable', 'Method');
+
+        $this->cleanCacheDirectory();
+
+        $this->assertEquals(
+            'We call it Voight-Kampff for short.',
+            trim(blade_controller('variable', 'Method', [], false))
         );
     }
 
