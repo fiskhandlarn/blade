@@ -51,6 +51,8 @@ blade_controller('index', 'Index');
 
 (This renders and echoes the template `/resources/views/index.blade.php` with data generated from `App\Controllers\Index`.)
 
+Controller classes must extend [`Fiskhandlarn\BladeController`](./src/BladeController.php).
+
 ... or use the `renderController` method on a `Blade` object:
 
 ```php
