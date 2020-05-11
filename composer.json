@@ -21,7 +21,7 @@
   },
   "require-dev": {
     "10up/wp_mock": "^0.4.2",
-    "phpunit/phpunit": "^8.0"
+    "phpunit/phpunit": ">=8.0"
   },
   "config": {
     "preferred-install": "dist",
