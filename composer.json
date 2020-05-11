@@ -47,5 +47,9 @@
     "psr-4": {
       "Fiskhandlarn\\Tests\\": "tests/"
     }
+  },
+  "suggest": {
+    "wordplate/framework": "WordPlate is a modern WordPress stack which simplifies WordPress development.",
+    "vlucas/phpdotenv": "Required if using WordPlate 8 (^4.0)."
   }
 }
