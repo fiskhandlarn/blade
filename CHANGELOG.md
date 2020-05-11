@@ -1,5 +1,10 @@
 # CHANGELOG
 
+## 0.5 (released 2020-05-11)
+
+- Updated dependencies
+- Added support for WordPlate 8
+
 ## 0.4.2 (released 2019-06-14)
 
 - Documented controller class requirements
