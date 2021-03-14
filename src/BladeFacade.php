@@ -18,8 +18,8 @@ class BladeFacade
     {
         if (self::$instance === null) {
             self::$instance = new Blade(
-                apply_filters('blade/view/paths', self::base_path('resources/views')),
-                apply_filters('blade/cache/path', self::base_path('storage/views')),
+                apply_filters('blade/view/paths', self::basePath('resources/views')),
+                apply_filters('blade/cache/path', self::basePath('storage/views')),
                 apply_filters('blade/cache/create', true)
             );
         }
@@ -46,7 +46,7 @@ class BladeFacade
      *
      * @return string
      */
-    public static function base_path(string $path = ''): string
+    public static function basePath(string $path = ''): string
     {
         // https://stackoverflow.com/a/45364136/1109380
         $reflection = new \ReflectionClass(\Composer\Autoload\ClassLoader::class);

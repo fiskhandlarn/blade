@@ -39,11 +39,11 @@ class BladeTest extends TestCase
         $this->blade = new Blade('tests/views', 'tests/cache');
 
         \WP_Mock::onFilter('blade/view/paths')
-            ->with(BladeFacade::base_path('resources/views'))
+            ->with(BladeFacade::basePath('resources/views'))
             ->reply('tests/views');
 
         \WP_Mock::onFilter('blade/cache/path')
-            ->with(BladeFacade::base_path('storage/views'))
+            ->with(BladeFacade::basePath('storage/views'))
             ->reply('tests/cache');
     }
 
