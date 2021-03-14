@@ -18,9 +18,14 @@ jobs:
         with:
           php-version: ${{ matrix.php }}
           coverage: xdebug
-      - run: composer install --prefer-dist --no-interaction
-      - run: vendor/bin/phpunit --coverage-clover=coverage.xml
-      - run: vendor/bin/phpcs
+      - name: "Validate composer.json"
+        run: composer validate
+      - name: "Install dependencies"
+        run: composer install --prefer-dist --no-interaction
+      - name: "Check coding standards"
+        run: vendor/bin/phpcs
+      - name: "Run test suite"
+        run: vendor/bin/phpunit --coverage-clover=coverage.xml
       - name: "Upload coverage to Codecov"
         uses: codecov/codecov-action@v1
         with:
