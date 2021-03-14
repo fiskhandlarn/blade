@@ -19,5 +19,13 @@ jobs:
           php-version: ${{ matrix.php }}
           coverage: xdebug
       - run: composer install --prefer-dist --no-interaction
-      - run: vendor/bin/phpunit --coverage-text
+      - run: vendor/bin/phpunit --coverage-clover=coverage.xml
       - run: vendor/bin/phpcs
+      - name: "Upload coverage to Codecov"
+        uses: codecov/codecov-action@v1
+        with:
+          file: ./coverage.xml
+          flags: tests
+          name: codecov-umbrella
+          yml: ./codecov.yml
+          fail_ci_if_error: true
