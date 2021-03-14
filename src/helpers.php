@@ -13,7 +13,7 @@ declare(strict_types=1);
 
 use Fiskhandlarn\BladeFacade;
 
-if (!function_exists('blade')) {
+if (!\function_exists('blade')) {
     /**
      * Render blade templates.
      *
@@ -35,7 +35,7 @@ if (!function_exists('blade')) {
     }
 }
 
-if (!function_exists('blade_controller')) {
+if (!\function_exists('blade_controller')) {
     /**
      * Render blade templates with data from controller class.
      *
@@ -61,7 +61,7 @@ if (!function_exists('blade_controller')) {
     }
 }
 
-if (!function_exists('blade_directive')) {
+if (!\function_exists('blade_directive')) {
     /**
      * Register a global custom directive.
      *
@@ -76,7 +76,7 @@ if (!function_exists('blade_directive')) {
     }
 }
 
-if (!function_exists('blade_composer')) {
+if (!\function_exists('blade_composer')) {
     /**
      * Register a global composer.
      *
@@ -91,7 +91,7 @@ if (!function_exists('blade_composer')) {
     }
 }
 
-if (!function_exists('blade_share')) {
+if (!\function_exists('blade_share')) {
     /**
      * Register global shared data.
      *
