@@ -1,9 +1,11 @@
 * text=auto
 
-/tests export-ignore
+/.editorconfig export-ignore
 /.gitattributes export-ignore
+/.github export-ignore
 /.gitignore export-ignore
-/.styleci.yml export-ignore
+/.phpcs.xml export-ignore
 /CHANGELOG.md export-ignore
-/TODO.md export-ignore
+/phpunit.xml.dist export-ignore
 /README.md export-ignore
+/tests export-ignore
