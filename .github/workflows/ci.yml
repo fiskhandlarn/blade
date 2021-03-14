@@ -27,5 +27,4 @@ jobs:
           file: ./coverage.xml
           flags: tests
           name: codecov-umbrella
-          yml: ./codecov.yml
           fail_ci_if_error: true
