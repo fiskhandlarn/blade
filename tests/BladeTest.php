@@ -13,15 +13,14 @@ declare(strict_types=1);
 
 namespace Fiskhandlarn\Tests;
 
+use App\Controllers\Method;
+use App\Controllers\NonController;
+use App\Controllers\Variable;
+use App\Controllers\VariableDisabled;
 use Fiskhandlarn\Blade;
 use Fiskhandlarn\BladeFacade;
 use Illuminate\Filesystem\Filesystem;
 use WP_Mock\Tools\TestCase;
-
-require __DIR__ . '/App/Controllers/Method.php';
-require __DIR__ . '/App/Controllers/Variable.php';
-require __DIR__ . '/App/Controllers/VariableDisabled.php';
-require __DIR__ . '/App/Controllers/NonController.php';
 
 /**
  * This is the blade test class.

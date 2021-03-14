@@ -1,5 +1,7 @@
 <?php
 
+// PSR1.Files.SideEffects
+
 // First we need to load the composer autoloader so we can use WP Mock
 require_once __DIR__ . '/../vendor/autoload.php';
 
@@ -11,4 +13,7 @@ if (class_exists('WordPlate\Application')) {
     new WordPlate\Application(__DIR__);
 }
 
-define('WP_DEBUG', true); // force clean cache directory
+// force clean cache directory
+// phpcs:disable
+define('WP_DEBUG', true);
+// phpcs:enable

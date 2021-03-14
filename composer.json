@@ -46,7 +46,8 @@
       "tests/helpers.php"
     ],
     "psr-4": {
-      "Fiskhandlarn\\Tests\\": "tests/"
+      "Fiskhandlarn\\Tests\\": "tests/",
+      "App\\Controllers\\": "tests/App/Controllers/"
     }
   },
   "scripts": {
