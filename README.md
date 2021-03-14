@@ -4,8 +4,7 @@
 
 A library for using [Laravel Blade](https://laravel.com/docs/7.x/blade) templates in WordPress/[WordPlate](https://wordplate.github.io/).
 
-[![Build Status](https://badgen.net/travis/fiskhandlarn/blade/master)](https://travis-ci.com/fiskhandlarn/blade)
-[![StyleCI](https://github.styleci.io/repos/177957823/shield)](https://github.styleci.io/repos/177957823)
+[![Build Status](https://badgen.net/github/status/fiskhandlarn/blade/master)](https://github.com/fiskhandlarn/blade/actions)
 [![Coverage Status](https://badgen.net/codecov/c/github/fiskhandlarn/blade)](https://codecov.io/github/fiskhandlarn/blade)
 [![Total Downloads](https://badgen.net/packagist/dt/fiskhandlarn/blade)](https://packagist.org/packages/fiskhandlarn/blade)
 [![Latest Version](https://badgen.net/github/release/fiskhandlarn/blade)](https://github.com/fiskhandlarn/blade/releases)
