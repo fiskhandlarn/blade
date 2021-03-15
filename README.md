@@ -18,12 +18,6 @@ Require this package, with [Composer](https://getcomposer.org), in the root dire
 $ composer require fiskhandlarn/blade
 ```
 
-If used in WordPlate version 8 you should also require [vlucas/phpdotenv](https://github.com/vlucas/phpdotenv) (please note that this replaces WordPlate's `env()` function with the one supplied by [illuminate/support](https://github.com/illuminate/support)):
-
-```bash
-composer require vlucas/phpdotenv:"^4.0"
-```
-
 ## Usage
 
 ### Render

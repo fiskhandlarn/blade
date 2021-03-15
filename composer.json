@@ -16,7 +16,7 @@
   ],
   "require": {
     "php": "^7.3 || ^8.0",
-    "illuminate/view": "^7.10",
+    "illuminate/view": "^8.32",
     "soberwp/controller": "^2.1"
   },
   "require-dev": {
@@ -55,7 +55,6 @@
     "cs": "vendor/bin/phpcs"
   },
   "suggest": {
-    "wordplate/framework": "WordPlate is a modern WordPress stack which simplifies WordPress development.",
-    "vlucas/phpdotenv": "Required if using WordPlate 8 (^4.0)."
+    "wordplate/wordplate": "WordPlate is a modern WordPress stack which simplifies WordPress development (^9.0)."
   }
 }
