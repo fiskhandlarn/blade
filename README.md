@@ -110,7 +110,7 @@ $blade->directive('datetime', function ($expression) {
 });
 ```
 
-Then you can use the directive in yourt emplates:
+Then you can use the directive in your templates:
 
 ```php
 {{-- In your Blade template --}}
