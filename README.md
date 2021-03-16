@@ -201,3 +201,6 @@ add_filter('blade/controller/namespace', function () {
     return 'MyApp\Controllers';
 });
 ```
+
+## License
+[GNU GPL 3.0+](//www.gnu.org/copyleft/gpl.html "GNU GPL 3.0")

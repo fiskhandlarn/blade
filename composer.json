@@ -2,7 +2,7 @@
   "name": "fiskhandlarn/blade",
   "description": "A library for using Laravel Blade templates in WordPress/WordPlate.",
   "keywords": ["wordplate", "blade", "laravel", "wordpress", "template", "view", "render"],
-  "license": "MIT",
+  "license": "GPL-3.0-or-later",
   "authors": [
     {
       "name": "Oskar Joelson",
