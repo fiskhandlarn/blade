@@ -2,12 +2,12 @@
 
 ![blade](https://user-images.githubusercontent.com/680264/55405831-302ab180-555b-11e9-94a9-fb6b606104b4.png)
 
-A library for using [Laravel Blade](https://laravel.com/docs/8.x/blade) templates in WordPress/[WordPlate](https://wordplate.github.io/).
+A library for using [Laravel Blade](https://laravel.com/docs/8.x/blade) templates in WordPress/[WordPlate](https://github.com/wordplate/wordplate).
 
-[![Build Status](https://badgen.net/github/status/fiskhandlarn/blade/master)](https://github.com/fiskhandlarn/blade/actions)
+[![Build Status](https://badgen.net/github/checks/fiskhandlarn/blade?label=build&icon=github)](https://github.com/fiskhandlarn/blade/actions)
 [![Coverage Status](https://badgen.net/codecov/c/github/fiskhandlarn/blade)](https://codecov.io/github/fiskhandlarn/blade)
 [![Total Downloads](https://badgen.net/packagist/dt/fiskhandlarn/blade)](https://packagist.org/packages/fiskhandlarn/blade)
-[![Latest Version](https://badgen.net/github/release/fiskhandlarn/blade)](https://github.com/fiskhandlarn/blade/releases)
+[![Latest Version](https://badgen.net/packagist/v/fiskhandlarn/blade)](https://packagist.org/packages/fiskhandlarn/blade)
 [![License](https://badgen.net/packagist/license/fiskhandlarn/blade)](https://packagist.org/packages/fiskhandlarn/blade)
 
 ## Installation
