@@ -2,10 +2,9 @@
 
 ![blade](https://user-images.githubusercontent.com/680264/55405831-302ab180-555b-11e9-94a9-fb6b606104b4.png)
 
-A library for using [Laravel Blade](https://laravel.com/docs/7.x/blade) templates in WordPress/[WordPlate](https://wordplate.github.io/).
+A library for using [Laravel Blade](https://laravel.com/docs/8.x/blade) templates in WordPress/[WordPlate](https://wordplate.github.io/).
 
-[![Build Status](https://badgen.net/travis/fiskhandlarn/blade/master)](https://travis-ci.com/fiskhandlarn/blade)
-[![StyleCI](https://github.styleci.io/repos/177957823/shield)](https://github.styleci.io/repos/177957823)
+[![Build Status](https://badgen.net/github/status/fiskhandlarn/blade/master)](https://github.com/fiskhandlarn/blade/actions)
 [![Coverage Status](https://badgen.net/codecov/c/github/fiskhandlarn/blade)](https://codecov.io/github/fiskhandlarn/blade)
 [![Total Downloads](https://badgen.net/packagist/dt/fiskhandlarn/blade)](https://packagist.org/packages/fiskhandlarn/blade)
 [![Latest Version](https://badgen.net/github/release/fiskhandlarn/blade)](https://github.com/fiskhandlarn/blade/releases)
@@ -17,12 +16,6 @@ Require this package, with [Composer](https://getcomposer.org), in the root dire
 
 ```bash
 $ composer require fiskhandlarn/blade
-```
-
-If used in WordPlate version 8 you should also require [vlucas/phpdotenv](https://github.com/vlucas/phpdotenv) (please note that this replaces WordPlate's `env()` function with the one supplied by [illuminate/support](https://github.com/illuminate/support)):
-
-```bash
-composer require vlucas/phpdotenv:"^4.0"
 ```
 
 ## Usage
@@ -101,7 +94,7 @@ Unnecessary features:
 
 ### Custom directive
 
-Create a custom [directive](https://laravel.com/docs/7.x/blade#extending-blade) with helper function `blade_directive`:
+Create a custom [directive](https://laravel.com/docs/8.x/blade#extending-blade) with helper function `blade_directive`:
 
 ```php
 blade_directive('datetime', function ($expression) {
@@ -117,7 +110,7 @@ $blade->directive('datetime', function ($expression) {
 });
 ```
 
-Then you can use the directive in yourt emplates:
+Then you can use the directive in your templates:
 
 ```php
 {{-- In your Blade template --}}
@@ -127,7 +120,7 @@ Then you can use the directive in yourt emplates:
 
 ### Custom composer
 
-Create a custom [composer](https://laravel.com/docs/7.x/views#view-composers) with helper function `blade_composer`:
+Create a custom [composer](https://laravel.com/docs/8.x/views#view-composers) with helper function `blade_composer`:
 
 ```php
 // Make variable available in all views
@@ -162,7 +155,7 @@ $blade->share(['badge' => 'B26354']);
 
 ### Extension
 
-The `Blade` class passes all method calls to the internal compiler (see [documentation](https://laravel.com/docs/7.x/blade)) or view factory (see [documentation](https://laravel.com/docs/7.x/views) for info on `exists`, `first` and `creator`).
+The `Blade` class passes all method calls to the internal compiler (see [documentation](https://laravel.com/docs/8.x/blade)) or view factory (see [documentation](https://laravel.com/docs/8.x/views) for info on `exists`, `first` and `creator`).
 
 ## Cache
 
@@ -208,3 +201,6 @@ add_filter('blade/controller/namespace', function () {
     return 'MyApp\Controllers';
 });
 ```
+
+## License
+[GNU GPL 3.0+](//www.gnu.org/copyleft/gpl.html "GNU GPL 3.0")

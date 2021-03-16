@@ -1,0 +1,35 @@
+name: CI
+
+on: [push, pull_request]
+
+jobs:
+  run:
+    runs-on: ubuntu-latest
+
+    strategy:
+      matrix:
+        php: [7.3, 7.4, 8.0]
+
+    name: PHP ${{ matrix.php }}
+
+    steps:
+      - uses: actions/checkout@v2
+      - uses: shivammathur/setup-php@v2
+        with:
+          php-version: ${{ matrix.php }}
+          coverage: xdebug
+      - name: "Validate composer.json"
+        run: composer validate
+      - name: "Install dependencies"
+        run: composer install --prefer-dist --no-interaction
+      - name: "Check coding standards"
+        run: vendor/bin/phpcs
+      - name: "Run test suite"
+        run: vendor/bin/phpunit --coverage-clover=coverage.xml
+      - name: "Upload coverage to Codecov"
+        uses: codecov/codecov-action@v1
+        with:
+          file: ./coverage.xml
+          flags: tests
+          name: codecov-umbrella
+          fail_ci_if_error: true

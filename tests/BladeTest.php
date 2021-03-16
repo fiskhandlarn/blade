@@ -1,27 +1,34 @@
 <?php
 
-/*
- * This file is part of fiskhandlarn/blade.
+/**
+ * This file is part of blade.
  *
- * (c) Oskar Joelson <oskar@joelson.org>
+ * blade is free software: you can redistribute it and/or modify
+ * it under the terms of the GNU General Public License as published by
+ * the Free Software Foundation, either version 3 of the License, or
+ * (at your option) any later version.
  *
- * For the full copyright and license information, please view the LICENSE
- * file that was distributed with this source code.
+ * blade is distributed in the hope that it will be useful,
+ * but WITHOUT ANY WARRANTY; without even the implied warranty of
+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+ * GNU General Public License for more details.
+ *
+ * You should have received a copy of the GNU General Public License
+ * along with blade.  If not, see <https://www.gnu.org/licenses/>.
  */
 
 declare(strict_types=1);
 
 namespace Fiskhandlarn\Tests;
 
+use App\Controllers\Method;
+use App\Controllers\NonController;
+use App\Controllers\Variable;
+use App\Controllers\VariableDisabled;
 use Fiskhandlarn\Blade;
 use Fiskhandlarn\BladeFacade;
 use Illuminate\Filesystem\Filesystem;
 use WP_Mock\Tools\TestCase;
-
-require __DIR__ . '/App/Controllers/Method.php';
-require __DIR__ . '/App/Controllers/Variable.php';
-require __DIR__ . '/App/Controllers/VariableDisabled.php';
-require __DIR__ . '/App/Controllers/NonController.php';
 
 /**
  * This is the blade test class.
@@ -40,11 +47,11 @@ class BladeTest extends TestCase
         $this->blade = new Blade('tests/views', 'tests/cache');
 
         \WP_Mock::onFilter('blade/view/paths')
-            ->with(BladeFacade::base_path('resources/views'))
+            ->with(BladeFacade::basePath('resources/views'))
             ->reply('tests/views');
 
         \WP_Mock::onFilter('blade/cache/path')
-            ->with(BladeFacade::base_path('storage/views'))
+            ->with(BladeFacade::basePath('storage/views'))
             ->reply('tests/cache');
     }
 
