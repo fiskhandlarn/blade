@@ -4,7 +4,7 @@
 
 - Changed license to GNU GPL 3.0+
 - Updated illuminate/view to 8.32
-- Changed recommendation to WordPlate >9.0
+- Changed recommendation to WordPlate >= 9.0
 - Updated phpunit/phpunit to 9.4.4
 
 ## 0.5 (released 2020-05-11)
