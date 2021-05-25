@@ -1,6 +1,6 @@
 # blade
 
-![blade](logo.svg)
+<img src="logo.svg" alt="blade" width="30%" />
 
 A library for using [Laravel Blade](https://laravel.com/docs/8.x/blade) templates in WordPress/[WordPlate](https://github.com/wordplate/wordplate).
 
