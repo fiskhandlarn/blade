@@ -1,5 +1,10 @@
 # CHANGELOG
 
+## 0.6.1 (released 2021-05-25)
+
+- Updated illuminate/view to 8.42
+- Updated squizlabs/php_codesniffer to 3.6
+
 ## 0.6 (released 2021-03-16)
 
 - Changed license to GNU GPL 3.0+
