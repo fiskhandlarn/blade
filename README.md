@@ -1,6 +1,6 @@
 # blade
 
-![blade](https://user-images.githubusercontent.com/680264/55405831-302ab180-555b-11e9-94a9-fb6b606104b4.png)
+![blade](logo.svg)
 
 A library for using [Laravel Blade](https://laravel.com/docs/8.x/blade) templates in WordPress/[WordPlate](https://github.com/wordplate/wordplate).
 
