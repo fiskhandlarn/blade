@@ -16,7 +16,7 @@
   ],
   "require": {
     "php": "^7.3 || ^8.0",
-    "illuminate/view": "^8.42",
+    "illuminate/view": "^8.83",
     "soberwp/controller": "^2.1"
   },
   "require-dev": {
