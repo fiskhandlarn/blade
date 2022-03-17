@@ -1,5 +1,9 @@
 # CHANGELOG
 
+## 0.6.2 (released 2022-03-17)
+
+- Updated illuminate/view to 8.83
+
 ## 0.6.1 (released 2021-05-25)
 
 - Updated illuminate/view to 8.42
