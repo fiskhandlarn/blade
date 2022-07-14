@@ -26,8 +26,10 @@ use App\Controllers\NonController;
 use App\Controllers\Variable;
 use App\Controllers\VariableDisabled;
 use Fiskhandlarn\Blade;
+use Fiskhandlarn\BladeControllerLoader;
 use Fiskhandlarn\BladeFacade;
 use Illuminate\Filesystem\Filesystem;
+use WP_Mock;
 use WP_Mock\Tools\TestCase;
 
 /**
@@ -42,22 +44,22 @@ class BladeTest extends TestCase
     public function setUp(): void
     {
         parent::setUp();
-        \WP_Mock::setUp();
+        WP_Mock::setUp();
 
         $this->blade = new Blade('tests/views', 'tests/cache');
 
-        \WP_Mock::onFilter('blade/view/paths')
+        WP_Mock::onFilter('blade/view/paths') /* @phpstan-ignore-line */
             ->with(BladeFacade::basePath('resources/views'))
             ->reply('tests/views');
 
-        \WP_Mock::onFilter('blade/cache/path')
+        WP_Mock::onFilter('blade/cache/path') /* @phpstan-ignore-line */
             ->with(BladeFacade::basePath('storage/views'))
             ->reply('tests/cache');
     }
 
     public function tearDown(): void
     {
-        \WP_Mock::tearDown();
+        WP_Mock::tearDown();
         parent::tearDown();
     }
 
@@ -66,21 +68,17 @@ class BladeTest extends TestCase
         $this->assertInstanceOf(Blade::class, $this->blade);
     }
 
-    public function testDefaults()
+    public function testNullResponses()
     {
-        $this->assertEquals(
-            'tests/views',
-            $this->blade->viewPaths
+        $this->assertNull(
+            $this->blade->thisMethodDoesNotExists()
         );
 
-        $this->assertEquals(
-            'tests/cache/1',
-            $this->blade->cachePath
-        );
+        $this->expectException(\Exception::class);
+        $this->expectExceptionMessage('No such class found in namespace App\Controllers: NonExistingController');
 
-        $this->assertEquals(
-            true,
-            $this->blade->createCacheDirectory
+        $this->assertNull(
+            BladeControllerLoader::dataFromController('NonExistingController')
         );
     }
 

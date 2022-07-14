@@ -1,0 +1,13 @@
+parameters:
+  level: 3
+  paths:
+    - src
+    - tests
+  excludePaths:
+    - tests/cache
+  ignoreErrors:
+    - '#Function apply_filters not found\.#'
+    - '#Function get_current_blog_id not found\.#'
+    - '#Function is_multisite not found\.#'
+    - '#Call to an undefined static method Fiskhandlarn\\BladeFacade::[\w]+\(\)\.#'
+  reportUnmatchedIgnoredErrors: false

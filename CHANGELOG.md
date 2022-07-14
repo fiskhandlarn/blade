@@ -1,5 +1,11 @@
 # CHANGELOG
 
+## 0.6.2 (released 2022-07-14)
+
+- Added PHPStan
+- Updated squizlabs/php_codesniffer to 3.7
+- Updated illuminate/view to 8.83
+
 ## 0.6.1 (released 2021-05-25)
 
 - Updated illuminate/view to 8.42

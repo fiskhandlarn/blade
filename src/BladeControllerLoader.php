@@ -53,32 +53,36 @@ class BladeControllerLoader
 
     public static function dataFromController(string $controllerClass, array $additionalData = []): ?array
     {
-        $class = self::getClassToRun(self::instance()->namespace, $controllerClass);
-
-        if ($class !== null) {
-            $container = Container::getInstance();
-
-            // Recreate the class so that $post is included
-            $controller = $container->make($class);
-
-            // Params
-            $controller->__setParams();
-
-            // Lifecycle
-            $controller->__before();
-
-            // Data
-            $controller->__setData($additionalData);
-
-            // Lifecycle
-            $controller->__after();
-
-            // Return
-            return $controller->__getData();
+        try {
+            $class = self::getClassToRun(self::instance()->namespace, $controllerClass);
+        } catch (\Exception $exception) {
+            // class not found
+            throw $exception;
+            return null;
         }
+
+        $container = Container::getInstance();
+
+        // Recreate the class so that $post is included
+        $controller = $container->make($class);
+
+        // Params
+        $controller->__setParams();
+
+        // Lifecycle
+        $controller->__before();
+
+        // Data
+        $controller->__setData($additionalData);
+
+        // Lifecycle
+        $controller->__after();
+
+        // Return
+        return $controller->__getData();
     }
 
-    private static function getClassToRun(string $namespace, string $class): ?string
+    private static function getClassToRun(string $namespace, string $class): string
     {
         try {
             $reflection = new \ReflectionClass($namespace . '\\' . $class);
