@@ -26,6 +26,7 @@ use App\Controllers\NonController;
 use App\Controllers\Variable;
 use App\Controllers\VariableDisabled;
 use Fiskhandlarn\Blade;
+use Fiskhandlarn\BladeControllerLoader;
 use Fiskhandlarn\BladeFacade;
 use Illuminate\Filesystem\Filesystem;
 use WP_Mock;
@@ -65,6 +66,20 @@ class BladeTest extends TestCase
     public function testInstance()
     {
         $this->assertInstanceOf(Blade::class, $this->blade);
+    }
+
+    public function testNullResponses()
+    {
+        $this->assertNull(
+            $this->blade->thisMethodDoesNotExists()
+        );
+
+        $this->expectException(\Exception::class);
+        $this->expectExceptionMessage('No such class found in namespace App\Controllers: NonExistingController');
+
+        $this->assertNull(
+            BladeControllerLoader::dataFromController('NonExistingController')
+        );
     }
 
     public function testRender()
