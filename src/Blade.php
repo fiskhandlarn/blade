@@ -37,6 +37,20 @@ class Blade
 {
 
     /**
+     * Path to compiled views.
+     *
+     * @var string
+     */
+    private $cachePath;
+
+    /**
+     * The compiler implementation.
+     *
+     * @var \Illuminate\View\Compilers\CompilerInterface
+     */
+    private $compiler;
+
+    /**
      * The container.
      *
      * @var \Illuminate\Container\Container
@@ -71,11 +85,9 @@ class Blade
      * @param string             $cachePath
      * @param bool               $createCacheDirectory
      */
-    public function __construct($viewPaths, $cachePath, $createCacheDirectory = true)
+    public function __construct($viewPaths, string $cachePath, bool $createCacheDirectory = true)
     {
-        $this->viewPaths = $viewPaths;
         $this->cachePath = $cachePath;
-        $this->createCacheDirectory = $createCacheDirectory;
         $this->container = new Container();
 
         if (is_multisite()) {
@@ -92,15 +104,15 @@ class Blade
             return $this->dispatcher;
         }, true);
 
-        $this->container->bindIf('config', function () {
+        $this->container->bindIf('config', function () use ($createCacheDirectory, $viewPaths) {
             $this->cleanCacheDirectory();
 
-            if ($this->createCacheDirectory && !$this->filesystem->isDirectory($this->cachePath)) {
+            if ($createCacheDirectory && !$this->filesystem->isDirectory($this->cachePath)) {
                 $this->filesystem->makeDirectory($this->cachePath, 0775, true, true);
             }
 
             return [
-                'view.paths' => (array) $this->viewPaths,
+                'view.paths' => (array) $viewPaths,
                 'view.compiled' => $this->cachePath,
             ];
         }, true);
@@ -120,7 +132,7 @@ class Blade
      *
      * @return mixed
      */
-    public function __call($name, $arguments)
+    public function __call(string $name, array $arguments)
     {
         if (method_exists($this->compiler, $name)) {
             return $this->compiler->{$name}(...$arguments);
@@ -129,6 +141,8 @@ class Blade
         if (method_exists($this->container['view'], $name)) {
             return $this->container['view']->{$name}(...$arguments);
         }
+
+        return null;
     }
 
     public function cleanCacheDirectory()

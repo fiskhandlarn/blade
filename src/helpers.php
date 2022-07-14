@@ -31,7 +31,7 @@ if (!\function_exists('blade')) {
      *
      * @param string $view
      * @param array $data
-     * @param bool $data
+     * @param bool $echo
      *
      * @return string
      */
@@ -53,7 +53,8 @@ if (!\function_exists('blade_controller')) {
      *
      * @param string $view
      * @param string $controllerClass
-     * @param bool $data
+     * @param array $additionalData
+     * @param bool $echo
      *
      * @return string
      */

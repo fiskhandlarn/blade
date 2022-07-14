@@ -76,9 +76,11 @@ class BladeControllerLoader
             // Return
             return $controller->__getData();
         }
+
+        return null;
     }
 
-    private static function getClassToRun(string $namespace, string $class): ?string
+    private static function getClassToRun(string $namespace, string $class): string
     {
         try {
             $reflection = new \ReflectionClass($namespace . '\\' . $class);
