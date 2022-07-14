@@ -35,7 +35,6 @@ use Illuminate\View\ViewServiceProvider;
  */
 class Blade
 {
-
     /**
      * Path to compiled views.
      *
