@@ -8,7 +8,7 @@ jobs:
 
     strategy:
       matrix:
-        php: [7.3, 7.4, 8.0]
+        php: [7.3, 7.4, 8.0, 8.1]
 
     name: PHP ${{ matrix.php }}
 
@@ -24,6 +24,8 @@ jobs:
         run: composer install --prefer-dist --no-interaction
       - name: "Check coding standards"
         run: vendor/bin/phpcs
+      - name: "Analyze code with PHPStan"
+        run: vendor/bin/phpstan
       - name: "Run test suite"
         run: vendor/bin/phpunit --coverage-clover=coverage.xml
       - name: "Upload coverage to Codecov"
